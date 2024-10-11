@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    volumes:
+      - ./data:/app/data  
+
+  plot:
+    build:
+      context: .
+      dockerfile: Dockerfile.plot
+    volumes:
+      - ./data:/app/data  
+    depends_on:
+      - api
+
